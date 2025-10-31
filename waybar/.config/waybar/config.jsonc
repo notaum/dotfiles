@@ -40,7 +40,11 @@
         "format": "{}% "
     },
     "hyprland/workspaces": {
-        "persistent-workspaces":{"*": 3,}
+        "persistent-workspaces":{"*": 3,},
+        "format": "{icon}",
+        "format-icons": {
+            "*": "B"  // Unicode for FontAwesome circle (works for all workspaces)
+    },
     },
     "temperature": {
         // "thermal-zone": 2,
