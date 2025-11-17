@@ -85,7 +85,7 @@ alias c='clear'
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 # Created by `pipx` on 2025-09-25 22:18:19
 export PATH="$PATH:/home/leo/.local/bin"
 export MANPAGER='nvim +Man!'
