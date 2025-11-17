@@ -1,0 +1,11 @@
+confirm_os_window_close 0
+font_family JetBrainsMono Nerd Font
+cursor_trail 1
+font_size 11.0
+cursor_shape block
+
+
+# BEGIN_KITTY_THEME
+# Cherry
+include current-theme.conf
+# END_KITTY_THEME
