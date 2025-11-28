@@ -35,8 +35,9 @@
         "persistent-workspaces":{"*": 3},
         "format": "{icon}",
         "format-icons": {
-            "active": "",
-            "persistent": ""
+            "1": "󰈹",
+            "2": "",
+            "3": "󰠮"
 
     },
     },
