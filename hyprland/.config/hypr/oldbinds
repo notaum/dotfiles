@@ -1,66 +1,81 @@
-#  ______   _______  _______  _______  ______   _______  _______  _______  ______   _______           #
-# (  ___ \ (  ____ \(  ____ \(  ____ )(  ___ \ (  ___  )(  ___  )(  ____ )(  ___ \ (  ___  )|\     /| #
-# | (   ) )| (    \/| (    \/| (    )|| (   ) )| (   ) || (   ) || (    )|| (   ) )| (   ) |( \   / ) #
-# | (__/ / | (__    | (__    | (____)|| (__/ / | |   | || |   | || (____)|| (__/ / | |   | | \ (_) /  #
-# |  __ (  |  __)   |  __)   |  _____)|  __ (  | |   | || |   | ||  _____)|  __ (  | |   | |  ) _ (   #
-# | ()  \ \ | (      | (      | (      | (  \ \ | |   | || |   | || (      | (  \ \ | |   | | / ( ) \ # 
-# | )___) )| (____/\| (____/\| )      | )___) )| (___) || (___) || )      | )___) )| (___) |( /   \ ) #
-# |/ \___/ (_______/(_______/|/       |/ \___/ (_______)(_______)|/       |/ \___/ (_______)|/     \| #
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-
-
-###################
-### MY PROGRAMS ###
-###################
-# See https://wiki.hyprland.org/Configuring/Keywords/
-# Set programs that you use
-
-$terminal = kitty
-$fileManager = dolphin
-$menu = fuzzel
-$browser = zen-browser
-$notes = obsidian
-
-
-###################
-### KEYBINDINGS ###
-###################
 binds {
 allow_workspace_cycles = true
+hide_special_on_workspace_change = true
 }
-$mainMod = SUPER # Sets "Windows" key as main modifier
-# Launch Apps
+
+# Set main modifier to SUPER key
+$mainMod = SUPER
+
+# Basic app launchers
 bind = ALT, SPACE, exec, uwsm app -- $menu
 bind = ALT,N, exec, uwsm app -- $notes
 bind = $mainMod, C, exec, uwsm app -- $terminal
 bind = $mainMod, E, exec, uwsm app -- $fileManager
 bind = $mainMod, B, exec, uwsm app -- $browser
-bind = $mainMod SHIFT, C, exec, uwsm app -- hyprpicker -a
-bind = ALT, O, exec, uwsm app -- ~/Scripts/onedrive.sh
-bind = ALT SHIFT, O, exec, uwsm app -- ~/Scripts/unmount.sh
-bind = ALT SHIFT, S, exec, uwsm app -- flameshot gui
+
+# Utilities
+bind = $mainMod SHIFT, C, exec, uwsm app -- hyprpicker -a # Colour picker
+bind = ALT SHIFT, S, exec, uwsm app -- flameshot gui # Screenshot tool
 bind = $mainMod, V, exec, kitty --class clipse -e clipse # Clipse Clipboard manager
 
-# Waybar and Kanata Management
+# Mount and unmount onedrive
+bind = ALT SHIFT, O, exec, uwsm app -- ~/Scripts/unmount.sh 
+bind = ALT, O, exec, uwsm app -- ~/Scripts/onedrive.sh
+
+# Waybar
 bind = SUPER ALT, W, exec, uwsm app -- ~/.config/waybar/waybar.sh
 bind = SUPER CTRL, W, exec, ~/.config/waybar/killbar.sh
+
+# Start and kill kanata
 bind = SUPER ALT, K, exec, uwsm app -- ~/.config/kanata/kanata-toggle.sh
 
 # Window Management
 bind = $mainMod, X, killactive,
 bind = $mainMod, F, togglefloating,
-bind = $mainMod, M, exit
-bind = $mainMod, K, exec, hyprctl kill
+bind = $mainMod CTRL, K, exec, hyprctl kill
+
+# Get info of the currently active window
 bind = $mainMod, I, exec, notify-send -t 2000 "$(hyprctl activewindow)"
+
+#Logout
+bind = $mainMod, M, exit
+bind = $mainMod ALT, P, exec, poweroff
+bind = $mainMod ALT, R, exec, reboot
+
+
+
+# Dwindle Layout
 bind = $mainMod ALT, V, togglesplit, # dwindle
+bind = $mainMod CTRL, R,submap,resize
+submap=resize
+binde = , right, resizeactive, 10 0
+binde = , left, resizeactive, -10 0
+binde = , up, resizeactive, 0 -10
+binde = , down, resizeactive, 0 10
+bind = , Return,submap,reset
+submap=reset
+
+# Master Layout
+
+
+# Scrolling Layout
+bind = $mainMod ALT, V, layoutmsg, movewindowto r
+bind = $mainMod ALT, C, layoutmsg, movewindowto l # Scrolling layout
+
+# Window managemnt utilities
 bind = ALT, Tab, workspace, previous # Toggle between current and the previously opened workspace
-bind = SUPER ALT, P, exec, poweroff
 
 # Move focus
-bind = $mainMod, l, movefocus, l
-bind = $mainMod, h, movefocus, r
+bind = $mainMod, l, movefocus, r
+bind = $mainMod, h, movefocus, l
 bind = $mainMod, k, movefocus, u
 bind = $mainMod, j, movefocus, d
+
+# Resize windows
+bind = $mainMod SHIFT, l, movefocus, r
+bind = $mainMod SHIFT, h, movefocus, l
+bind = $mainMod SHIFT, k, movefocus, u
+bind = $mainMod SHIFT, j, movefocus, d
 
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, 1, workspace, 1
@@ -87,18 +102,19 @@ bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
 # Example special workspace (scratchpad)
-bind = $mainMod, S, togglespecialworkspace, magic
-bind = $mainMod SHIFT, S, movetoworkspace, special:magic
+# bind = $mainMod, S, togglespecialworkspace, magic
+# bind = $mainMod SHIFT, S, movetoworkspace, special:magic
 
 # Scroll through existing workspaces with mainMod + scroll
 bind = $mainMod, mouse_down, workspace, e+1
 bind = $mainMod, mouse_up, workspace, e-1
-bind = $mainMod, A, workspace, e+1
-bind = $mainMod, Z, workspace, e-1
+
 
 # Move/resize windows with mainMod + LMB/RMB and dragging
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
+bindm = ALT, mouse:273, colresize
+
 
 # Laptop multimedia keys for volume and LCD brightness
 bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+

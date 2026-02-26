@@ -80,6 +80,10 @@ alias ls='ls --color'
 alias code=codium
 alias vim='nvim'
 alias c='clear'
+alias s='aura -Ss '
+alias as='aura -As '
+alias i='aura -S '
+alias ai='aura -A '
 
 # Shell integrations
 eval "$(fzf --zsh)"
