@@ -84,7 +84,7 @@ alias s='aura -Ss '
 alias as='aura -As '
 alias i='aura -S '
 alias ai='aura -A '
-
+alias pk='~/Scripts/pkgs.sh'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
