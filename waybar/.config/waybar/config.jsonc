@@ -7,7 +7,7 @@
     "modules-right": ["pulseaudio", "network","clock","tray"],
     "tray": {
         "icon-size": 18,
-        "spacing": 10,
+        "spacing": 10
     },
     "clock": {
         // "timezone": "America/New_York",
