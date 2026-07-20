@@ -1,19 +1,65 @@
-@import url("/home/earthian/.cache/wal/gtk-colors.css");
-@import url("./styles/notifications.css");
+:root {
+  --border-radius: 5px;
+  --cc-bg: transparent;
 
-.control-center {
-  background: transparent;
+  --widget-background: rgba(46, 46, 46, 0.7);
+  --noti-bg-alpha: 0.6;
+
+  --padding: calc(var(--border-radius) / 2);
 }
 
-.control-center-list {
-  background: transparent;
+* {
+  font-size: 12px;
+  font-family: "JetBrains Mono Nerd";
+}
+.control-center {
+  border-radius: 0;
+}
+
+.notification {
+  font-size: 14px;
+
+}
+.widgets > .widget,
+.widget-mpris > carouselindicatordots,
+.widget-mpris > box > button {
+  background: var(--widget-background);
+  border-radius: var(--border-radius);
+  padding: calc(var(--border-radius) / 2);
+  border: var(--border);
 }
 
 .control-center-list-placeholder {
-  opacity: 0.1;
+  padding: var(--border-radius);
 }
 
-/* Window behind control center and on all other monitors */
-.blank-window {
+.notification-group {
+  border-radius: var(--border-radius);
+  padding: 8px;
+}
+
+.widget.widget-mpris {
   background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+}
+.widget.widget-mpris > carouselindicatordots {
+  --dots-padding: 4px;
+  padding: var(--dots-padding);
+  padding-left: var(--dots-padding);
+  padding-right: calc(6px + var(--dots-padding));
+  margin: 0;
+  margin-top: var(--padding);
+}
+.widget-mpris > box > button:hover {
+  background: rgba(46, 46, 46, 1);
+}
+.widget-mpris-player {
+  box-shadow: none;
+  border: var(--border);
+  margin: 0 var(--padding);
+}
+.widget-mpris-player:only-child {
+  margin: 0;
 }

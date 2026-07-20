@@ -7,9 +7,9 @@
 - ~find ~/.config/swaync -type f -name "*.css" | entr -p -s "swaync-client -rs; say hi; swaync-client -t"~
 - styles reference file: ~/etc/xdg/swaync/style.css~
 
-swaync-client -C # close all notifications
-swaync-client -rs # reload css
-swaync-client -R # reload config file
+swaync-client -C 
+swaync-client -rs 
+swaync-client -R 
 
 #+begin_src sh Test your notification widgets by C-c C-c this:
 # [body] markup:
